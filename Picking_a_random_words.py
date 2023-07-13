@@ -3,64 +3,12 @@ import random
 
 #Taking out the words from hangman.py 
 from hangman_words import words
+#importing hangman_art 
+from hangman_art import logo
+print(logo)
+from hangman_art import stages
 
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
 
 chossen_word=random.choice(words)
 print(chossen_word)
@@ -81,14 +29,15 @@ while not end_of_game:
         if letter==guess:
             display[position]=letter
     
-    print(display)
-
+    # check if guessed word is present in chossen_word    
     if guess not in chossen_word:
+        print(f"\nYou guessed {guess}, that's not present in the word. You lost a life.")
         lives-=1
     if lives==0:
         end_of_game=True
         print("You lost")
     
+    # Joining all the elements into the list and turing into a string.
     print(f"{' '.join(display)}")
     
     #checking if all the letters entered by the user are present in the choosen_word.
